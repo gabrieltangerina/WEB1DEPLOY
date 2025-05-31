@@ -12,7 +12,7 @@
 
                     @if($produto->imagem)
                     <div class="mb-4 flex justify-center">
-                        <img src="{{ $produto->imagem }}" alt="{{ $produto->nome }}" class="max-w-xs w-75 h-75 rounded-lg shadow-md">
+                        <img src="{{ $produto->imagem }}" alt="{{ $produto->nome }}" class="h-48 md:h-56 lg:h-64 w-auto max-w-full sm:max-w-md object-contain rounded-lg border-2 border-gray-200 p-1 shadow-lg bg-white">
                     </div>
                     @else
                     <p class="mb-4 text-sm text-gray-500">Este produto não possui imagem.</p>

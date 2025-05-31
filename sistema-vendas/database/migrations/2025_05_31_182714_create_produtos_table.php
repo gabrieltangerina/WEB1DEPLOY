@@ -8,15 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->text('descricao')->nullable();
-            $table->decimal('preco', 8, 2);
-            $table->integer('estoque');
-            $table->string('imagem')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('produtos')) {
+            Schema::create('produtos', function (Blueprint $table) {
+                $table->id();
+                $table->string('nome');
+                $table->text('descricao')->nullable();
+                $table->decimal('preco', 8, 2);
+                $table->integer('estoque');
+                $table->string('imagem')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     public function down(): void

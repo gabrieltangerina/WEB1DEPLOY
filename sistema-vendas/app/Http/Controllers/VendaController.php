@@ -69,17 +69,9 @@ class VendaController extends Controller
     public function edit(Venda $venda)
     {
 
-        $produtoAtualDaVenda = Produto::withTrashed()->find($venda->produto_id);
-
-
-
-
+        $produtoAtualDaVenda = Produto::find($venda->produto_id);
         $produtosParaSelecao = Produto::orderBy('nome')->get();
-
-
-
         $estoqueAparenteProdutoAtual = $produtoAtualDaVenda ? $produtoAtualDaVenda->estoque + $venda->quantidade : 0;
-
 
         return view('vendas.edit', compact('venda', 'produtosParaSelecao', 'produtoAtualDaVenda', 'estoqueAparenteProdutoAtual'));
     }
@@ -95,7 +87,7 @@ class VendaController extends Controller
         try {
             DB::beginTransaction();
 
-            $produtoAnterior = Produto::withTrashed()->findOrFail($venda->produto_id);
+            $produtoAnterior = Produto::findOrFail($venda->produto_id);
             $quantidadeAnterior = $venda->quantidade;
 
             $novoProduto = Produto::findOrFail($request->produto_id);
@@ -136,7 +128,7 @@ class VendaController extends Controller
         try {
             DB::beginTransaction();
 
-            $produto = Produto::withTrashed()->find($venda->produto_id);
+            $produto = Produto::find($venda->produto_id);
 
             if ($produto) {
                 $produto->increment('estoque', $venda->quantidade);

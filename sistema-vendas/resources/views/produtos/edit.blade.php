@@ -48,7 +48,7 @@
                             @if ($produto->imagem)
                             <div class="mt-4">
                                 <p class="text-sm text-gray-600 mb-1">Imagem Atual:</p>
-                                <img src="{{ $produto->imagem }}" alt="Imagem Atual de {{ $produto->nome }}" class="h-32 w-auto object-cover rounded">
+                                <img src="{{ $produto->imagem }}" alt="Imagem Atual de {{ $produto->nome }}" class="h-48 md:h-56 lg:h-64 w-auto max-w-full sm:max-w-md object-contain rounded-lg border-2 border-gray-200 p-1 shadow-lg bg-white">
                             </div>
                             @endif
                         </div>
