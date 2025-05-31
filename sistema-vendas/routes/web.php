@@ -6,7 +6,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VendaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('produtos.index'); // Ou redirect('/produtos');
 });
 
 Route::get('/dashboard', function () {
