@@ -16,6 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <x-nav-link :href="route('produtos.index')" :active="request()->routeIs('produtos.index')">
+                    {{ __('Produtos') }}
+                </x-nav-link>
+
+                <x-nav-link :href="route('vendas.index')" :active="request()->routeIs('vendas.*')">
+                    {{ __('Vendas') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
@@ -43,7 +51,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -89,7 +97,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
