@@ -6,11 +6,11 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VendaController;
 
 Route::get('/', function () {
-    return redirect()->route('produtos.index'); // Ou redirect('/produtos');
+    return redirect()->route('produtos.index');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('produtos.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
