@@ -1,0 +1,45 @@
+services:
+  web:
+    build: ./app/
+    container_name: container_web
+    restart: always
+    ports: 
+      - "80:80"
+    links:
+      - mysql:mysql
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - application_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: container_mysql
+    restart: always
+    volumes:
+      - ./script_sql.sql:/docker-entrypoint-initdb.d/script_sql.sql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: senha_do_root 
+      MYSQL_DATABASE: crud_db
+      MYSQL_USER: gabriel 
+      MYSQL_PASSWORD: senha_da_nasa 
+    networks:
+      - application_network
+
+  adminer:
+    image: adminer
+    container_name: container_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - application_network
+      
+
+networks:
+  application_network:
+    driver: bridge
