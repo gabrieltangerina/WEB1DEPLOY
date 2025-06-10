@@ -3,7 +3,7 @@ services:
     image: php:8.2-apache
     container_name: apache_php
     volumes:
-      - ./html:/var/www/html
+      # - ./html:/var/www/html
       - ./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
     ports:
       - "8080:80"
