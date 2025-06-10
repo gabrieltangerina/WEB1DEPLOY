@@ -1,0 +1,50 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: apache_php
+    volumes:
+      - ./html:/var/www/html
+      - ./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - "8080:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: always
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: meu_banco
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: usuario
+      PMA_PASSWORD: senha
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: always
+    
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
