@@ -2,6 +2,10 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 require 'header.php';
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 
 <div class="inicio">

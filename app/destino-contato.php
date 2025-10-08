@@ -2,6 +2,7 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 require 'header.php';
+// allow anonymous creation but you might want to protect it in some scenarios
 ?>
 
 <div class="inicio">

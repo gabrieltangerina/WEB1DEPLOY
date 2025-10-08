@@ -1,3 +1,3 @@
 <?php 
-  header("Location:listagem.php");
+  header("Location:login.php");
 ?>

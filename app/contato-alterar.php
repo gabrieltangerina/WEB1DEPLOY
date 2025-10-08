@@ -1,5 +1,9 @@
 <?php
 require 'header.php';
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
 
 require "conexao.php";
 

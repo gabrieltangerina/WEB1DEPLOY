@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -42,6 +47,6 @@
             </a>
 
             <?php
-            require 'menu.php'
-                ?>
+            require 'menu.php';
+            ?>
         </header>

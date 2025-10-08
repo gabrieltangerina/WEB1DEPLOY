@@ -1,5 +1,10 @@
 <?php
 require 'header.php';
+// require authentication
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <div class="inicio">
     <div class="bg-light p-4 mb-4 rounded">
